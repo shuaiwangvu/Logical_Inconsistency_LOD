@@ -39,5 +39,9 @@ for s in collect_nodes:
     for o in collect_nodes:
         (triples, cardinality) = hdt_file.search_triples(s, '', o)
         for (s, p, o) in triples :
-            if (s, p ,o) not in collect_triple_rdf:
-                print ('FOUND EXTRA: ', s, p, o)
+            # if (s, p ,o) not in collect_triple_rdf:
+            collect_triple_rdf_lod.add(s, p, o)
+
+print('# collect triple in LOD: ', len (collect_triple_rdf_lod))
+collect_extra = collect_triple_rdf_lod.difference(collect_triple_rdf)
+print ('# extra: ', len(collect_extra))

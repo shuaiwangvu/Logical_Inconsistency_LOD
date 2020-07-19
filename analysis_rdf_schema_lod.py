@@ -24,10 +24,11 @@ collect_nodes = set()
 # loop through each triple in the graph (subj, pred, obj)
 for subj, pred, obj in g:
     count += 1
-    collect_triple_rdf.add((subj, pred, obj))
+    collect_triple_rdf.add((subj[:-1], pred[:-1], obj[:-1]))
     collect_nodes.add (subj)
     collect_nodes.add (obj)
 
+print('**** In the original RDF scheme ****')
 print('there are in total ', len(collect_triple_rdf), ' Triples' )
 print('there are in total ', len(collect_nodes), ' Nodes' )
 

@@ -24,7 +24,7 @@ collect_nodes = set()
 # loop through each triple in the graph (subj, pred, obj)
 for subj, pred, obj in g:
     count += 1
-    collect_triple_rdf.add((subj, pred, obj))
+    collect_triple_rdf.add((str(subj), str(pred), str(obj)))
     collect_nodes.add (subj)
     collect_nodes.add (obj)
 
@@ -41,7 +41,7 @@ for s in collect_nodes:
         (triples, cardinality) = hdt_file.search_triples(s, '', o)
         for (s, p, o) in triples :
             # if (s, p ,o) not in collect_triple_rdf:
-            collect_triple_rdf_lod.add((s, p, o))
+            collect_triple_rdf_lod.add((str(s), str(p), str(o)))
 
 print('# collect triple in LOD: ', len (collect_triple_rdf_lod))
 collect_extra = collect_triple_rdf_lod.difference(collect_triple_rdf)

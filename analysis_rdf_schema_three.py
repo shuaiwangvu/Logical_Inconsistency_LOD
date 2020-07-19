@@ -11,7 +11,7 @@
 
 
 import rdflib
-
+import difflib
 # create a Graph
 g = rdflib.Graph()
 
@@ -26,10 +26,15 @@ for subj, pred, obj in g:
     collect_triple_rdf.add((subj, pred, obj))
     # check if there is at least one triple in the Graph
     if "http://www.w3.org/2000/01/rdf-schema#subClassOf" in subj:
-        print (subj, pred, obj)
-        print ('SUBJ: ', subj)
+        # print (subj, pred, obj)
+        print ('SUBJ:', subj [0], '-', subj[-1])
         print ("http://www.w3.org/2000/01/rdf-schema#subClassOf")
-        
+        if ("http://www.w3.org/2000/01/rdf-schema#subClassOf" == str(subj)):
+            print ('But they are NOW equal!')
+            print ('len subClassOf = ', len("http://www.w3.org/2000/01/rdf-schema#subClassOf"))
+            print ('len subj       = ', len(subj))
+            print ('type:',type(subj))
+            print ('type:',type("http://www.w3.org/2000/01/rdf-schema#subClassOf"))
     if "http://www.w3.org/2000/01/rdf-schema#seeAlso" in pred:
         print ('SEE ALSO: ',subj, pred, obj)
 

@@ -1,0 +1,14 @@
+issues ?
+many old versions?
+
+A manual review of the logical core (core schema) of the schema of lod-a-lot
+
+
+Just RDF Schema has three versions:
+1) https://www.w3.org/2000/01/rdf-schema#
+2) http://www.w3.org/2000/01/rdf-schema-more
+3) http://www.w3.org/2000/01/combined-ns-translation.rdf.fr
+linked by see also
+http://www.w3.org/2000/01/rdf-schema# http://www.w3.org/2000/01/rdf-schema#seeAlso http://www.w3.org/2000/01/rdf-schema-more
+in the more but not the original :
+http://www.w3.org/2000/01/rdf-schema# http://www.w3.org/2000/01/rdf-schema#seeAlso http://www.w3.org/2000/01/combined-ns-translation.rdf.fr

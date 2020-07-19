@@ -12,3 +12,25 @@ linked by see also
 http://www.w3.org/2000/01/rdf-schema# http://www.w3.org/2000/01/rdf-schema#seeAlso http://www.w3.org/2000/01/rdf-schema-more
 in the more but not the original :
 http://www.w3.org/2000/01/rdf-schema# http://www.w3.org/2000/01/rdf-schema#seeAlso http://www.w3.org/2000/01/combined-ns-translation.rdf.fr
+
+TODO: Test the inconsistency and redundency.
+Plot the relations and analysis :
+reflexive arrows:
+derived relations:
+
+check this page: https://www.w3.org/2001/sw/RDFCore/Schema/20010913/#s2.1
+
+====
+owl (extends RDF, so how much are the overlapping now? after all this?):
+https://www.w3.org/2002/07/owl
+
+
+http://www.w3.org/2002/07/owl#AsymmetricProperty http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://www.w3.org/2000/01/rdf-schema#Class
+owl:AsymmetricProperty rdfs:subClassOf owl:ObjectProperty
+
+
+
+TODO:
+on the page: https://www.w3.org/TR/owl-ref/#Semantics
+For readers familiar with DAML+OIL, Appendix D lists many of the changes between DAML+OIL and OWL.
+Finally, Appendix E provides a set of practical guidelines for specifying OWL DL ontologies in RDF.

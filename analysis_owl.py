@@ -16,9 +16,9 @@ import difflib
 g = rdflib.Graph()
 
 subClassOf = "http://www.w3.org/2000/01/rdf-schema#subClassOf"
-
+type = "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
 # parse in an RDF file hosted on the Internet
-result = g.parse("https://www.w3.org/2000/01/rdf-schema")
+result = g.parse("https://www.w3.org/2002/07/owl")
 print (result)
 count = 0
 collect_triple_rdf = set()
@@ -38,16 +38,17 @@ for subj, pred, obj in g:
         #     print ('type:',type(subj))
         #     print ('type:',type("http://www.w3.org/2000/01/rdf-schema#subClassOf"))
     # if "http://www.w3.org/2000/01/rdf-schema#seeAlso" in pred:
-    #     print ('SEE ALSO: ',subj, pred, obj)
+    print ('\t',subj, pred, obj)
+
+#
+# for subj, pred, obj in collect_triple_rdf:
+#     if pred == subClassOf:
+#         print (subj, obj)
 
 
-for subj, pred, obj in collect_triple_rdf:
-    if pred == subClassOf:
-        print (subj, obj)
 
+print ('count = ',count)
 
-
-# print ('count = ',count)
 #
 #     # if (subj, pred, obj) not in g:
 #     #    raise Exception("It better be!")

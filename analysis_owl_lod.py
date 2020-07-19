@@ -8,46 +8,66 @@
     # in the more but not the original :
     # http://www.w3.org/2000/01/rdf-schema# http://www.w3.org/2000/01/rdf-schema#seeAlso http://www.w3.org/2000/01/combined-ns-translation.rdf.fr
 
-
-
 import rdflib
+from hdt import HDTDocument, IdentifierPosition
+from collections import Counter
 import difflib
+
+
+PATH_LOD = "/scratch/wbeek/data/LOD-a-lot/data.hdt"
+hdt_file =  HDTDocument(PATH_LOD)
+
 # create a Graph
 g = rdflib.Graph()
 
 subClassOf = "http://www.w3.org/2000/01/rdf-schema#subClassOf"
-
+type = "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
 # parse in an RDF file hosted on the Internet
-result = g.parse("https://www.w3.org/2000/01/rdf-schema")
-print (result)
+
+result = g.parse("https://www.w3.org/2002/07/owl")
+
+
 count = 0
-collect_triple_rdf = set()
+collect_triple_owl = set()
+collect_nodes = set()
 # loop through each triple in the graph (subj, pred, obj)
 for subj, pred, obj in g:
     count += 1
-    collect_triple_rdf.add((str(subj), str(pred), str(obj)))
-    # check if there is at least one triple in the Graph
-    # if subClassOf in subj:
-        # print (subj, pred, obj)
-        # print ('SUBJ:', subj [0], '-', subj[-1])
-        # print ("http://www.w3.org/2000/01/rdf-schema#subClassOf")
-        # if ("http://www.w3.org/2000/01/rdf-schema#subClassOf" == str(subj)):
-        #     print ('But they are NOW equal!')
-        #     print ('len subClassOf = ', len("http://www.w3.org/2000/01/rdf-schema#subClassOf"))
-        #     print ('len subj       = ', len(subj))
-        #     print ('type:',type(subj))
-        #     print ('type:',type("http://www.w3.org/2000/01/rdf-schema#subClassOf"))
-    # if "http://www.w3.org/2000/01/rdf-schema#seeAlso" in pred:
-    #     print ('SEE ALSO: ',subj, pred, obj)
+    collect_triple_owl.add((str(subj), str(pred), str(obj)))
+    collect_nodes.add (subj)
+    collect_nodes.add (obj)
+
+print('**** In the original OWL scheme ****')
+print('there are in total ', len(collect_triple_owl), ' Triples' )
+print('there are in total ', len(collect_nodes), ' Nodes' )
 
 
-for subj, pred, obj in collect_triple_rdf:
-    if pred == subClassOf:
-        print (subj, obj)
+collect_triple_owl_lod = set()
+count_relations_between_nodes = Counter()
+
+for s in collect_nodes:
+    for o in collect_nodes:
+        (triples, cardinality) = hdt_file.search_triples(s, '', o)
+        for (s, p, o) in triples :
+            # if (s, p ,o) not in collect_triple_owl:
+            collect_triple_owl_lod.add((str(s), str(p), str(o)))
+
+print('# collect triple in LOD: ', len (collect_triple_owl_lod))
+collect_extra = collect_triple_owl_lod.difference(collect_triple_owl)
+print ('# extra: ', len(collect_extra))
+for (s, p, o) in collect_extra:
+    print ('They are:', s, p, o)
+
+
+#
+# for subj, pred, obj in collect_triple_owl:
+#     if pred == subClassOf:
+#         print (subj, obj)
 
 
 
-# print ('count = ',count)
+print ('count = ',count)
+
 #
 #     # if (subj, pred, obj) not in g:
 #     #    raise Exception("It better be!")
@@ -58,12 +78,12 @@ for subj, pred, obj in collect_triple_rdf:
 # result = g.parse("http://www.w3.org/2000/01/rdf-schema-more")
 # print (result)
 # count = 0
-# collect_triple_rdf_more = set()
+# collect_triple_owl_more = set()
 # # loop through each triple in the graph (subj, pred, obj)
 # for subj, pred, obj in g:
 #     # check if there is at least one triple in the Graph
 #     count += 1
-#     collect_triple_rdf_more.add((subj, pred, obj))
+#     collect_triple_owl_more.add((subj, pred, obj))
 #     if "http://www.w3.org/2000/01/rdf-schema#subClassOf" in subj:
 #         print (subj, pred, obj)
 #     if "http://www.w3.org/2000/01/rdf-schema#seeAlso" in pred:
@@ -74,12 +94,12 @@ for subj, pred, obj in collect_triple_rdf:
 #
 #
 # print ('================')
-# for (s, p, o) in collect_triple_rdf_more.difference(collect_triple_rdf):
+# for (s, p, o) in collect_triple_owl_more.difference(collect_triple_owl):
 #     print ('in MORE but not in ORIGINAL: ', s, p , o)
 #
 #
 # print ('================')
-# for (s, p, o) in collect_triple_rdf.difference(collect_triple_rdf_more):
+# for (s, p, o) in collect_triple_owl.difference(collect_triple_owl_more):
 #     print ('in ORIGINAL but not in MORE: ', s, p , o)
 #
 #
@@ -88,12 +108,12 @@ for subj, pred, obj in collect_triple_rdf:
 # result = g.parse("http://www.w3.org/2000/01/combined-ns-translation.rdf.fr")
 # print (result)
 # count = 0
-# collect_triple_rdf_more = set()
+# collect_triple_owl_more = set()
 # # loop through each triple in the graph (subj, pred, obj)
 # for subj, pred, obj in g:
 #     # check if there is at least one triple in the Graph
 #     count += 1
-#     collect_triple_rdf_more.add((subj, pred, obj))
+#     collect_triple_owl_more.add((subj, pred, obj))
 #     if "http://www.w3.org/2000/01/rdf-schema#subClassOf" in subj:
 #         print (subj, pred, obj)
 # print ('count French = ', count)

@@ -27,6 +27,9 @@ for subj, pred, obj in g:
     # check if there is at least one triple in the Graph
     if "http://www.w3.org/2000/01/rdf-schema#subClassOf" in subj:
         print (subj, pred, obj)
+        print ('SUBJ: ', subj)
+        print ("http://www.w3.org/2000/01/rdf-schema#subClassOf")
+        
     if "http://www.w3.org/2000/01/rdf-schema#seeAlso" in pred:
         print ('SEE ALSO: ',subj, pred, obj)
 

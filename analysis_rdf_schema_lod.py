@@ -46,3 +46,5 @@ for s in collect_nodes:
 print('# collect triple in LOD: ', len (collect_triple_rdf_lod))
 collect_extra = collect_triple_rdf_lod.difference(collect_triple_rdf)
 print ('# extra: ', len(collect_extra))
+for (s, p, o) in collect_extra:
+    print ('They are:' s, p, o)

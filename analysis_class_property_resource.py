@@ -11,6 +11,8 @@ rdf_property = "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"
 subClassOf = "http://www.w3.org/2000/01/rdf-schema#subClassOf"
 subPropertyOf = "http://www.w3.org/2000/01/rdf-schema#subPropertyOf"
 owlClass = "http://www.w3.org/2002/07/owl#Class"
+owlThing = "https://www.w3.org/2002/07/owl#Thing"
+owlNothing = "https://www.w3.org/2002/07/owl#Nothing"
 
 PATH_LOD = "/scratch/wbeek/data/LOD-a-lot/data.hdt"
 hdt_file =  HDTDocument(PATH_LOD)
@@ -37,7 +39,7 @@ def get_triple(subj, obj, triples):
     return collect
 
 
-collect_nodes = [rdfs_class, rdfs_resource, rdf_property, subClassOf, subPropertyOf, owlClass]
+collect_nodes = [rdfs_class, rdfs_resource, rdf_property, subClassOf, subPropertyOf, owlClass, owlThing, owlNothing]
 
 collect_triple_lod = set()
 

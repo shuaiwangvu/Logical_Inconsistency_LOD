@@ -64,7 +64,7 @@ for (s, p, o) in triples:
             print ('progress: ', count /cardinality)
         domain, name = get_domain_and_label(s)
         ct_domain[domain] += 1
-        ct_name[name] += 1
+        # ct_name[name] += 1
 
 
 for n in ct_domain:
@@ -72,6 +72,6 @@ for n in ct_domain:
         print ('DOMAIN: ', ct_domain[n])
 
 
-for n in ct_name:
-    if ct_name[n] > 5:
-        print ('NAME: ', ct_name[n])
+# for n in ct_name:
+#     if ct_name[n] > 5:
+#         print ('NAME: ', ct_name[n])

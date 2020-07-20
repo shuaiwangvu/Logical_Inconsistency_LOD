@@ -52,6 +52,7 @@ def find_how_many(predicate):
 
 # find out the domain and count them:
 (triples, cardinality) = hdt_file.search_triples("", sameas, "")
+print ('there are in total: ', cardinality, ' triples')
 ct_domain = Counter()
 ct_name = Counter()
 # ct[] += 1
@@ -59,7 +60,7 @@ count = 0
 for (s, p, o) in triples:
     if s == o:
         count += 1
-        if count % (int (cardinality/10)) == 0:
+        if count % (int (cardinality/100)) == 0:
             print ('progress: ', count /cardinality)
         domain, name = get_domain_and_label(s)
         ct_domain[domain] += 1

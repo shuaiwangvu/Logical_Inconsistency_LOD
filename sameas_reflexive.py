@@ -15,7 +15,11 @@ equivalent = "http://www.w3.org/2002/07/owl#equivalentClass"
 print ('there are in total: ', cardinality, ' sameAs triples')
 
 collect_sameas_nodes = set()
+count = 0
 for (s, p, o) in triples :
+    count += 1
+    if count % 10000000 == 0:
+        print ('progress: ',count /cardinality)
     if s == o:
         collect_sameas_nodes.add(s)
 print ('Among them, there are in total ', len (collect_sameas_nodes), ' reflexive arrows')
@@ -26,7 +30,11 @@ print ('Among them, there are in total ', len (collect_sameas_nodes), ' reflexiv
 print ('there are in total: ', cardinality, ' equivalent triples')
 
 collect_equivalent_nodes = set()
+count = 0
 for (s, p, o) in triples :
+    count += 1
+    if count % 10000 == 0:
+        print ('progress: ',count /cardinality)
     if s == o:
         collect_equivalent_nodes.add(s)
 print ('Among them, there are in total ', len (collect_equivalent_nodes), ' reflexive arrows')

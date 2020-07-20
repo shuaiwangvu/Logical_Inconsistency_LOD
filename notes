@@ -18,7 +18,7 @@ http://www.w3.org/2000/01/rdf-schema# http://www.w3.org/2000/01/rdf-schema#seeAl
 
 TODO: Test the inconsistency and redundency.
 Plot the relations and analysis :
-reflexive arrows:
+reflexive relations:
 derived relations:
 
 check this page: https://www.w3.org/2001/sw/RDFCore/Schema/20010913/#s2.1
@@ -79,3 +79,45 @@ FOR OWL
 there are  450  triples collected, which consists of  250  nodes
 there are  895  triples collected.
 there are  602  extra triples found.
+===
+
+
+For the predicate http://purl.org/dc/terms/hasPart,
+there are in total:  3461053  triples.
+Among them, there are in total  1401  reflexive relations
+That's 0.04 percent being reflexive relations
+
+For the predicate http://www.w3.org/2004/02/skos/core#narrower,
+there are in total:  817194  triples.
+Among them, there are in total  21  reflexive relations
+That's 0.0025 percent being reflexive relations
+
+For predicate:  http://www.w3.org/2004/02/skos/core#broader,
+there are in total:  11866699  triples.
+Among them, there are in total  6786  reflexive relations
+That's 0.057 percent being reflexive relations
+
+For predicate:  http://www.w3.org/2000/01/rdf-schema#subClassOf,
+there are in total:  4461717  triples.
+Among them, there are in total  368  reflexive relations
+That's 0.0082 percent being reflexive relations
+
+For predicate:  http://www.w3.org/2002/07/owl#equivalentClass,
+there are in total:  1051979  triples.
+Among them, there are in total  324  reflexive relations
+That's 0.030 percent being reflexive relations
+==
+
+bio2rdf,31332
+open,256
+dbpedia,2714187
+gesis,3508
+purl,1018
+uniprot,32858
+wecowi,137
+flickr,6974
+====
+2,790,662
+===
+
+What about relations between 

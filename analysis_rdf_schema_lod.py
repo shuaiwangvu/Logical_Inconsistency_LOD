@@ -16,6 +16,7 @@ g = rdflib.Graph()
 
 
 # parse in an RDF file hosted on the Internet
+result = g.parse("https://www.w3.org/1999/02/22-rdf-syntax-ns")
 result = g.parse("https://www.w3.org/2000/01/rdf-schema")
 # print (result)
 count = 0

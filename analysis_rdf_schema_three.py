@@ -17,8 +17,9 @@ g = rdflib.Graph()
 
 subClassOf = "http://www.w3.org/2000/01/rdf-schema#subClassOf"
 
-# parse in an RDF file hosted on the Internet
-result = g.parse("https://www.w3.org/2000/01/rdf-schema")
+
+print ('RDF: ')
+result = g.parse("https://www.w3.org/1999/02/22-rdf-syntax-ns")
 print (result)
 count = 0
 collect_triple_rdf = set()
@@ -26,6 +27,23 @@ collect_triple_rdf = set()
 for subj, pred, obj in g:
     count += 1
     collect_triple_rdf.add((str(subj), str(pred), str(obj)))
+
+for subj, pred, obj in collect_triple_rdf:
+    if pred == subClassOf:
+        print (subj, obj)
+
+
+g = rdflib.Graph()
+print ('RDFS: ')
+# parse in an RDF file hosted on the Internet
+result = g.parse("https://www.w3.org/2000/01/rdf-schema")
+print (result)
+count = 0
+collect_triple_rdfs = set()
+# loop through each triple in the graph (subj, pred, obj)
+for subj, pred, obj in g:
+    count += 1
+    collect_triple_rdfs.add((str(subj), str(pred), str(obj)))
     # check if there is at least one triple in the Graph
     # if subClassOf in subj:
         # print (subj, pred, obj)
@@ -41,9 +59,14 @@ for subj, pred, obj in g:
     #     print ('SEE ALSO: ',subj, pred, obj)
 
 
-for subj, pred, obj in collect_triple_rdf:
+for subj, pred, obj in collect_triple_rdfs:
     if pred == subClassOf:
         print (subj, obj)
+
+
+
+
+
 
 
 

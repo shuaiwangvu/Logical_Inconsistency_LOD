@@ -3,6 +3,9 @@ many old versions?
 
 A manual review of the logical core (core schema) of the schema of lod-a-lot
 
+RDF:
+https://www.w3.org/1999/02/22-rdf-syntax-ns#
+
 
 Just RDF Schema has three versions:
 1) https://www.w3.org/2000/01/rdf-schema#

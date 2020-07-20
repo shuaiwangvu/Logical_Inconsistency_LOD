@@ -18,6 +18,25 @@ rdfs = "https://www.w3.org/2000/01/rdf-schema"
 owl = "https://www.w3.org/2002/07/owl"
 
 
+g = rdflib.Graph()
+result = g.parse(rdf)
+result = g.parse(rdfs)
+result = g.parse(owl)
+
+collect_triple_original = set()
+# loop through each triple in the graph (subj, pred, obj)
+for subj, pred, obj in g:
+    count += 1
+    collect_triple_original.add((str(subj), str(pred), str(obj)))
+
+def get_triple(subj, obj, triples):
+    collect = set()
+    for (s, p, o) in triples:
+        if s == subj and o == obj:
+            collect.add ((s, p, o))
+    return collect
+
+
 collect_nodes = [rdfs_class, rdfs_resource, rdf_property, subClassOf, subPropertyOf]
 
 collect_triple_lod = set()
@@ -29,5 +48,11 @@ for s in collect_nodes:
             # if (s, p ,o) not in collect_triple_rdf:
             collect_triple_lod.add((str(s), str(p), str(o)))
 
-for (s, o, p) in collect_triple_lod:
-    print ('all relations: ', s, o, p)
+for s in collect_nodes:
+    for o in collect_nodes:
+        print ('subj: ', s)
+        print ('obj: ', o)
+        for (s, p, o) in get_triple(s, o, collect_triple_original):
+            print ('\toriginal: ', p)
+        for (s, p, o) in get_triple(s, o, collect_triple_lod):
+            print ('\t     lod: ', p)

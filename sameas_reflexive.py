@@ -61,7 +61,7 @@ count = 0
 for (s, p, o) in triples:
     if s == o:
         count += 1
-        if count % (int (cardinality/10000)) == 0:
+        if count % (int (cardinality/100000)) == 0:
             print ('progress: ', count /cardinality)
         if count > cardinality/100:
             break

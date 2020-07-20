@@ -5,6 +5,7 @@ from hdt import HDTDocument, IdentifierPosition
 from collections import Counter
 import difflib
 import tldextract
+import csv
 
 PATH_LOD = "/scratch/wbeek/data/LOD-a-lot/data.hdt"
 hdt_file =  HDTDocument(PATH_LOD)
@@ -57,6 +58,11 @@ print ('there are in total: ', cardinality, ' triples')
 ct_domain = Counter()
 ct_name = Counter()
 # ct[] += 1
+
+file =  open('domain_analysis.csv', 'w', newline='')
+writer = csv.writer(file)
+writer.writerow([ "Domain", "Count"])
+
 count = 0
 for (s, p, o) in triples:
     if s == o:
@@ -65,14 +71,20 @@ for (s, p, o) in triples:
         ct_domain[domain] += 1
         # ct_name[name] += 1
 
-        if count % (int (cardinality/100000)) == 0:
+        if count % (int (cardinality/1000)) == 0:
             print ('progress: ', count /cardinality)
-            print ('count domain = ',len(ct_domain))
-            for n in ct_domain:
-                if ct_domain[n] > 10:
-                    print ('DOMAIN: ', ct_domain[n], ' : ', n)
-        if count > cardinality/1000:
-            break
+            # print ('count domain = ',len(ct_domain))
+            # for n in ct_domain:
+            #     if ct_domain[n] > 100:
+            #         print ('DOMAIN: ', ct_domain[n], ' : ', n)
+
+        # if count > cardinality/10000:
+        #     break
+
+
+for n in ct_domain:
+    if ct_domain[n] > 100:
+        writer.writerow([n, ct_domain[n]])
 
 
 

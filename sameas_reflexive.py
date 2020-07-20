@@ -70,7 +70,7 @@ for (s, p, o) in triples:
             print ('count domain = ',len(ct_domain))
             for n in ct_domain:
                 if ct_domain[n] > 10:
-                    print ('DOMAIN: ', ct_domain[n])
+                    print ('DOMAIN: ', ct_domain[n], ' : ', n)
         if count > cardinality/1000:
             break
 

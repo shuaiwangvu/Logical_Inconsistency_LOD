@@ -25,8 +25,8 @@ print ('Among them, there are in total ', len (collect_sameas_nodes), ' reflexiv
 (triples, cardinality) = hdt_file.search_triples("", equivalent, "")
 print ('there are in total: ', cardinality, ' equivalent triples')
 
-collect_sameas_nodes = set()
+collect_equivalent_nodes = set()
 for (s, p, o) in triples :
     if s == o:
-        collect_sameas_nodes.add(s)
-print ('Among them, there are in total ', len (collect_sameas_nodes), ' reflexive arrows')
+        collect_equivalent_nodes.add(s)
+print ('Among them, there are in total ', len (collect_equivalent_nodes), ' reflexive arrows')

@@ -10,31 +10,27 @@ hdt_file =  HDTDocument(PATH_LOD)
 
 sameas = "http://www.w3.org/2002/07/owl#sameAs"
 equivalent = "http://www.w3.org/2002/07/owl#equivalentClass"
+subClassOf = "http://www.w3.org/2000/01/rdf-schema#subClassOf"
+broader = "http://www.w3.org/2004/02/skos/core#broader"
+narrower = "http://www.w3.org/2004/02/skos/core#narrower"
+hasPart = "http://purl.org/dc/terms/hasPart"
 
-(triples, cardinality) = hdt_file.search_triples("", sameas, "")
-print ('there are in total: ', cardinality, ' sameAs triples')
+predicate_list = [hasPart, narrower, broader, subClassOf, equivalent, sameas]
 
-collect_sameas_nodes = set()
-count = 0
-for (s, p, o) in triples :
-    count += 1
-    if count % 10000000 == 0:
-        print ('progress: ',count /cardinality)
-    if s == o:
-        collect_sameas_nodes.add(s)
-print ('Among them, there are in total ', len (collect_sameas_nodes), ' reflexive arrows')
+def find_how_many(predicate):
+    print('For predicate: ', predicate)
+    (triples, cardinality) = hdt_file.search_triples("", predicate, "")
+    print ('there are in total: ', cardinality, ' triples')
 
+    collect_nodes = set()
+    count = 0
+    for (s, p, o) in triples :
+        count += 1
+        if count % (int (cardinality/5)) == 0:
+            print ('progress: ', count /cardinality)
+        if s == o:
+            collect_sameas_nodes.add(s)
+    print ('Among them, there are in total ', len (collect_nodes), ' reflexive arrows')
 
-
-(triples, cardinality) = hdt_file.search_triples("", equivalent, "")
-print ('there are in total: ', cardinality, ' equivalent triples')
-
-collect_equivalent_nodes = set()
-count = 0
-for (s, p, o) in triples :
-    count += 1
-    if count % 10000 == 0:
-        print ('progress: ',count /cardinality)
-    if s == o:
-        collect_equivalent_nodes.add(s)
-print ('Among them, there are in total ', len (collect_equivalent_nodes), ' reflexive arrows')
+for p in predicate_list:
+    find_how_many(p)

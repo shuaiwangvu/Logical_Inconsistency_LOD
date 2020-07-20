@@ -8,6 +8,8 @@ from collections import Counter
 PATH_LOD = "/scratch/wbeek/data/LOD-a-lot/data.hdt"
 hdt_file =  HDTDocument(PATH_LOD)
 rdf = "https://www.w3.org/1999/02/22-rdf-syntax-ns"
+rdfs = "https://www.w3.org/2000/01/rdf-schema"
+owl = "https://www.w3.org/2002/07/owl"
 
 def compute_extra (name):
 
@@ -51,8 +53,23 @@ def compute_extra (name):
     return collect_triple, collect_nodes, collect_triple_lod, collect_extra
 
 
+print ('FOR RDF')
 
 collect_triple, collect_nodes, collect_triple_lod, collect_extra =  compute_extra(rdf)
+print ('there are ', len(collect_triple), ' triples collected, which consists of ', len(collect_nodes), ' nodes')
+print ('there are ', len(collect_triple_lod), ' triples collected. ')
+print ('there are ', len(collect_extra), ' extra triples found. ')
+
+print ('FOR RDFS')
+
+collect_triple, collect_nodes, collect_triple_lod, collect_extra =  compute_extra(rdfs)
+print ('there are ', len(collect_triple), ' triples collected, which consists of ', len(collect_nodes), ' nodes')
+print ('there are ', len(collect_triple_lod), ' triples collected. ')
+print ('there are ', len(collect_extra), ' extra triples found. ')
+
+print ('FOR OWL')
+
+collect_triple, collect_nodes, collect_triple_lod, collect_extra =  compute_extra(owl)
 print ('there are ', len(collect_triple), ' triples collected, which consists of ', len(collect_nodes), ' nodes')
 print ('there are ', len(collect_triple_lod), ' triples collected. ')
 print ('there are ', len(collect_extra), ' extra triples found. ')

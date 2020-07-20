@@ -19,7 +19,8 @@ hasPart = "http://purl.org/dc/terms/hasPart"
 predicate_list = [hasPart, narrower, broader, subClassOf, equivalent, sameas]
 
 
-
+def get_domain(t):
+    return tldextract.extract(t).domain
 
 def get_domain_and_label(t):
     domain = tldextract.extract(t).domain
@@ -60,9 +61,9 @@ count = 0
 for (s, p, o) in triples:
     if s == o:
         count += 1
-        if count % (int (cardinality/100)) == 0:
+        if count % (int (cardinality/10000)) == 0:
             print ('progress: ', count /cardinality)
-        domain, name = get_domain_and_label(s)
+        domain = get_domain(s)
         ct_domain[domain] += 1
         # ct_name[name] += 1
 

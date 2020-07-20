@@ -49,27 +49,31 @@ def compute_extra (name):
 
     # print('# collect triple in LOD: ', len (collect_triple_lod))
     collect_extra = collect_triple_lod.difference(collect_triple)
+    collect_not_included = collect_triple.difference(collect_triple_lod)
 
-    return collect_triple, collect_nodes, collect_triple_lod, collect_extra
+    return collect_triple, collect_nodes, collect_triple_lod, collect_extra, collect_not_included
 
 
 print ('FOR RDF')
 
-collect_triple, collect_nodes, collect_triple_lod, collect_extra =  compute_extra(rdf)
+collect_triple, collect_nodes, collect_triple_lod, collect_extra, collect_not_included =  compute_extra(rdf)
 print ('there are ', len(collect_triple), ' triples collected, which consists of ', len(collect_nodes), ' nodes')
 print ('there are ', len(collect_triple_lod), ' triples collected. ')
 print ('there are ', len(collect_extra), ' extra triples found. ')
+print ('there are ', len(collect_not_included), ' triples not included in LOD. ')
 
 print ('FOR RDFS')
 
-collect_triple, collect_nodes, collect_triple_lod, collect_extra =  compute_extra(rdfs)
+collect_triple, collect_nodes, collect_triple_lod, collect_extra, collect_not_included =  compute_extra(rdfs)
 print ('there are ', len(collect_triple), ' triples collected, which consists of ', len(collect_nodes), ' nodes')
 print ('there are ', len(collect_triple_lod), ' triples collected. ')
 print ('there are ', len(collect_extra), ' extra triples found. ')
+print ('there are ', len(collect_not_included), ' triples not included in LOD. ')
 
 print ('FOR OWL')
 
-collect_triple, collect_nodes, collect_triple_lod, collect_extra =  compute_extra(owl)
+collect_triple, collect_nodes, collect_triple_lod, collect_extra, collect_not_included =  compute_extra(owl)
 print ('there are ', len(collect_triple), ' triples collected, which consists of ', len(collect_nodes), ' nodes')
 print ('there are ', len(collect_triple_lod), ' triples collected. ')
 print ('there are ', len(collect_extra), ' extra triples found. ')
+print ('there are ', len(collect_not_included), ' triples not included in LOD. ')

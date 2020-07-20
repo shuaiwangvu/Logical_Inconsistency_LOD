@@ -62,3 +62,20 @@ TODO:
 on the page: https://www.w3.org/TR/owl-ref/#Semantics
 For readers familiar with DAML+OIL, Appendix D lists many of the changes between DAML+OIL and OWL.
 Finally, Appendix E provides a set of practical guidelines for specifying OWL DL ontologies in RDF.
+
+Why are people redefining relations?
+How many are wrong/implied?
+
+===
+FOR RDF
+there are  127  triples collected, which consists of  81  nodes
+there are  241  triples collected.
+there are  177  extra triples found.
+FOR RDFS
+there are  87  triples collected, which consists of  50  nodes
+there are  190  triples collected.
+there are  134  extra triples found.
+FOR OWL
+there are  450  triples collected, which consists of  250  nodes
+there are  895  triples collected.
+there are  602  extra triples found.

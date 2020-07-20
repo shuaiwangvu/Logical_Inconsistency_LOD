@@ -26,7 +26,6 @@ result = g.parse(owl)
 collect_triple_original = set()
 # loop through each triple in the graph (subj, pred, obj)
 for subj, pred, obj in g:
-    count += 1
     collect_triple_original.add((str(subj), str(pred), str(obj)))
 
 def get_triple(subj, obj, triples):

@@ -67,13 +67,14 @@ for (s, p, o) in triples:
 
         if count % (int (cardinality/100000)) == 0:
             print ('progress: ', count /cardinality)
-            print (ct_domain)
+            print ('count domain = ',len(ct_domain))
+            for n in ct_domain:
+                if ct_domain[n] > 10:
+                    print ('DOMAIN: ', ct_domain[n])
         if count > cardinality/1000:
             break
 
-for n in ct_domain:
-    if ct_domain[n] > 10:
-        print ('DOMAIN: ', ct_domain[n])
+
 
 
 # for n in ct_name:

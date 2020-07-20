@@ -31,7 +31,7 @@ def find_how_many(predicate):
         if s == o:
             collect_nodes.add(s)
     print ('Among them, there are in total ', len (collect_nodes), ' reflexive arrows')
-    print ('There are ', collect_nodes/cardinality, ' reflexive arrows')
+    print ('There are ', len(collect_nodes)/cardinality, ' reflexive arrows')
 
 for p in predicate_list:
     find_how_many(p)

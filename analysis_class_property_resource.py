@@ -8,6 +8,8 @@ from collections import Counter
 rdfs_class = "http://www.w3.org/2000/01/rdf-schema#Class"
 rdfs_resource = "http://www.w3.org/2000/01/rdf-schema#Resource"
 rdf_property = "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"
+subClassOf = "http://www.w3.org/2000/01/rdf-schema#subClassOf"
+subPropertyOf = "http://www.w3.org/2000/01/rdf-schema#subPropertyOf"
 
 PATH_LOD = "/scratch/wbeek/data/LOD-a-lot/data.hdt"
 hdt_file =  HDTDocument(PATH_LOD)
@@ -16,7 +18,7 @@ rdfs = "https://www.w3.org/2000/01/rdf-schema"
 owl = "https://www.w3.org/2002/07/owl"
 
 
-collect_nodes = [rdfs_class, rdfs_resource, rdf_property]
+collect_nodes = [rdfs_class, rdfs_resource, rdf_property, subClassOf, subPropertyOf]
 
 collect_triple_lod = set()
 

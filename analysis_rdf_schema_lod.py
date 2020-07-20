@@ -29,7 +29,7 @@ for subj, pred, obj in g:
     collect_nodes.add (subj)
     collect_nodes.add (obj)
 
-print('**** In the original RDF scheme ****')
+print('**** In the original RDF+RDF Scheme ****')
 print('there are in total ', len(collect_triple_rdf), ' Triples' )
 print('there are in total ', len(collect_nodes), ' Nodes' )
 
@@ -48,4 +48,5 @@ print('# collect triple in LOD: ', len (collect_triple_rdf_lod))
 collect_extra = collect_triple_rdf_lod.difference(collect_triple_rdf)
 print ('# extra: ', len(collect_extra))
 for (s, p, o) in collect_extra:
-    print ('They are:', s, p, o)
+    if s!=o:
+        print ('None reflexive ones:', s, p, o)

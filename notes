@@ -23,6 +23,31 @@ derived relations:
 
 check this page: https://www.w3.org/2001/sw/RDFCore/Schema/20010913/#s2.1
 
+
+RDF:
+
+http://www.w3.org/1999/02/22-rdf-syntax-ns#HTML http://www.w3.org/2000/01/rdf-schema#Literal
+http://www.w3.org/1999/02/22-rdf-syntax-ns#List http://www.w3.org/2000/01/rdf-schema#Resource
+http://www.w3.org/1999/02/22-rdf-syntax-ns#Alt http://www.w3.org/2000/01/rdf-schema#Container
+http://www.w3.org/1999/02/22-rdf-syntax-ns#Statement http://www.w3.org/2000/01/rdf-schema#Resource
+http://www.w3.org/1999/02/22-rdf-syntax-ns#JSON http://www.w3.org/2000/01/rdf-schema#Literal
+http://www.w3.org/1999/02/22-rdf-syntax-ns#CompoundLiteral http://www.w3.org/2000/01/rdf-schema#Resource
+http://www.w3.org/1999/02/22-rdf-syntax-ns#Seq http://www.w3.org/2000/01/rdf-schema#Container
+http://www.w3.org/1999/02/22-rdf-syntax-ns#Bag http://www.w3.org/2000/01/rdf-schema#Container
+http://www.w3.org/1999/02/22-rdf-syntax-ns#langString http://www.w3.org/2000/01/rdf-schema#Literal
+http://www.w3.org/1999/02/22-rdf-syntax-ns#Property http://www.w3.org/2000/01/rdf-schema#Resource
+http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral http://www.w3.org/2000/01/rdf-schema#Literal
+http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral http://www.w3.org/2000/01/rdf-schema#Literal
+RDFS:
+
+http://www.w3.org/2000/01/rdf-schema#Class http://www.w3.org/2000/01/rdf-schema#Resource
+http://www.w3.org/2000/01/rdf-schema#ContainerMembershipProperty http://www.w3.org/1999/02/22-rdf-syntax-ns#Property
+http://www.w3.org/2000/01/rdf-schema#Container http://www.w3.org/2000/01/rdf-schema#Resource
+http://www.w3.org/2000/01/rdf-schema#Literal http://www.w3.org/2000/01/rdf-schema#Resource
+http://www.w3.org/2000/01/rdf-schema#Datatype http://www.w3.org/2000/01/rdf-schema#Class
+
+
+
 ====
 owl (extends RDF, so how much are the overlapping now? after all this?):
 https://www.w3.org/2002/07/owl

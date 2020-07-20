@@ -63,7 +63,7 @@ for (s, p, o) in triples:
         count += 1
         if count % (int (cardinality/100000)) == 0:
             print ('progress: ', count /cardinality)
-        if count > cardinality/100:
+        if count > cardinality/1000:
             break
         domain = get_domain(s)
         ct_domain[domain] += 1

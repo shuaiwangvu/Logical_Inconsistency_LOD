@@ -29,7 +29,7 @@ def find_how_many(predicate):
         if count % (int (cardinality/5)) == 0:
             print ('progress: ', count /cardinality)
         if s == o:
-            collect_sameas_nodes.add(s)
+            collect_nodes.add(s)
     print ('Among them, there are in total ', len (collect_nodes), ' reflexive arrows')
 
 for p in predicate_list:

@@ -11,6 +11,17 @@ rdf = "https://www.w3.org/1999/02/22-rdf-syntax-ns"
 rdfs = "https://www.w3.org/2000/01/rdf-schema"
 owl = "https://www.w3.org/2002/07/owl"
 
+nodes_drawing = ['http://www.w3.org/1999/02/22-rdf-syntax-ns#type',
+'http://www.w3.org/1999/02/22-rdf-syntax-ns#Property',
+'http://www.w3.org/2000/01/rdf-schema#subClassOf',
+'http://www.w3.org/2000/01/rdf-schema#subPropertyOf',
+'http://www.w3.org/2000/01/rdf-schema#Resource',
+'http://www.w3.org/2000/01/rdf-schema#Class',
+'http://www.w3.org/2002/07/owl#Class',
+'http://www.w3.org/2002/07/owl#Nothing',
+'http://www.w3.org/2002/07/owl#Thing',
+'http://www.w3.org/2002/07/owl#sameAs']
+
 def compute_extra (name):
 
     # create a Graph
@@ -46,6 +57,10 @@ def compute_extra (name):
             for (s, p, o) in triples :
                 # if (s, p ,o) not in collect_triple_rdf:
                 collect_triple_lod.add((str(s), str(p), str(o)))
+            (triples, cardinality) = hdt_file.search_triples(o, '', s)
+            for (o, p, s) in triples :
+                # if (s, p ,o) not in collect_triple_rdf:
+                collect_triple_lod.add((str(o), str(p), str(s)))
 
     # print('# collect triple in LOD: ', len (collect_triple_lod))
     collect_extra = collect_triple_lod.difference(collect_triple)
@@ -58,22 +73,53 @@ print ('FOR RDF')
 
 collect_triple, collect_nodes, collect_triple_lod, collect_extra, collect_not_included =  compute_extra(rdf)
 print ('there are ', len(collect_triple), ' triples collected, which consists of ', len(collect_nodes), ' nodes')
-print ('there are ', len(collect_triple_lod), ' triples collected. ')
+print ('there are ', len(collect_triple_lod), ' triples collected in LOD. ')
 print ('there are ', len(collect_extra), ' extra triples found. ')
+
+for (s, p ,o) in collect_extra:
+    if s in nodes_drawing and o in nodes_drawing:
+        print (s, p, o)
+
+
 print ('there are ', len(collect_not_included), ' triples not included in LOD. ')
+for (s, p ,o) in collect_not_included:
+    if s in nodes_drawing and o in nodes_drawing:
+        print (s, p, o)
+
+
+
 
 print ('FOR RDFS')
 
 collect_triple, collect_nodes, collect_triple_lod, collect_extra, collect_not_included =  compute_extra(rdfs)
 print ('there are ', len(collect_triple), ' triples collected, which consists of ', len(collect_nodes), ' nodes')
-print ('there are ', len(collect_triple_lod), ' triples collected. ')
+print ('there are ', len(collect_triple_lod), ' triples collected in LOD. ')
 print ('there are ', len(collect_extra), ' extra triples found. ')
+
+for (s, p ,o) in collect_extra:
+    if s in nodes_drawing and o in nodes_drawing:
+        if 'http://www.w3.org/2000/01/rdf-schema#subClassOf' in p or 'http://www.w3.org/1999/02/22-rdf-syntax-ns#type' in p:
+            print (s, p, o)
+
 print ('there are ', len(collect_not_included), ' triples not included in LOD. ')
+for (s, p ,o) in collect_not_included:
+    if s in nodes_drawing and o in nodes_drawing:
+        if 'http://www.w3.org/2000/01/rdf-schema#subClassOf' in p or 'http://www.w3.org/1999/02/22-rdf-syntax-ns#type' in p:
+            print (s, p, o)
 
 print ('FOR OWL')
 
 collect_triple, collect_nodes, collect_triple_lod, collect_extra, collect_not_included =  compute_extra(owl)
 print ('there are ', len(collect_triple), ' triples collected, which consists of ', len(collect_nodes), ' nodes')
-print ('there are ', len(collect_triple_lod), ' triples collected. ')
+print ('there are ', len(collect_triple_lod), ' triples collected in LOD. ')
 print ('there are ', len(collect_extra), ' extra triples found. ')
+
+for (s, p ,o) in collect_extra:
+    if s in nodes_drawing and o in nodes_drawing:
+        if 'http://www.w3.org/2000/01/rdf-schema#subClassOf' in p or 'http://www.w3.org/1999/02/22-rdf-syntax-ns#type' in p:
+            print (s, p, o)
+
 print ('there are ', len(collect_not_included), ' triples not included in LOD. ')
+for (s, p ,o) in collect_not_included:
+    if s in nodes_drawing and o in nodes_drawing:
+        print (s, p, o)

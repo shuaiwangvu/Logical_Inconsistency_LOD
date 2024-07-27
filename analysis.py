@@ -1,4 +1,6 @@
-# analysis of the original RDF schema against the LOD cloud and see what are the differences:
+# analysis of the original RDF, RDF schema, and OWL, against the LOD-a-lot file.
+# The output are in the file output.txt and has been manually examined and checked.
+# Contact: Shuai Wang (shuai.wang@vu.nl)
 
 import rdflib
 from hdt import HDTDocument, IdentifierPosition
@@ -11,6 +13,7 @@ rdf = "https://www.w3.org/1999/02/22-rdf-syntax-ns"
 rdfs = "https://www.w3.org/2000/01/rdf-schema"
 owl = "https://www.w3.org/2002/07/owl"
 
+#print only edges that are useful for our plot.
 nodes_drawing = ['http://www.w3.org/1999/02/22-rdf-syntax-ns#type',
 'http://www.w3.org/1999/02/22-rdf-syntax-ns#Property',
 'http://www.w3.org/2000/01/rdf-schema#subClassOf',
